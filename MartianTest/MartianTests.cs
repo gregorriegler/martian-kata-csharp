@@ -34,7 +34,7 @@ public class Tests
     public void TranslatesToMoves()
     {
         var expected = MessageEncoder.ToMoves("HOW");
-        Assert.That(expected, Is.EqualTo(new[] { (4, 4), (-4, 11), (-10, 2) }));
+        Assert.That(expected, Is.EqualTo(new[] { (4, 4), (-4, 11), (-10, 2), (-7, 0)}));
     }
 
     [Test]
@@ -45,6 +45,6 @@ public class Tests
         
         rover.SendMessage("HOW");
         
-        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int> {4,4,-4,11,-10,2}));
+        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int> {4,4,-4,11,-10,2,-7,0}));
     }
 }
