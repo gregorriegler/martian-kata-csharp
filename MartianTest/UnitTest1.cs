@@ -1,3 +1,5 @@
+using NUnit.Framework.Constraints;
+
 namespace MartianTest;
 
 public class Tests
@@ -32,6 +34,17 @@ public class Tests
     {
         var expected = AsSeparatedHex("HO");
         Assert.That(expected, Is.EqualTo(new [] {(4,8), (4,15)}));
+    }
+
+    [Test]
+    public void METHOD()
+    {
+        Assert.That(ToMoves("H"),Is.EqualTo(new []{(4,4)}));
+    }
+
+    private (int, int)[] ToMoves(string message)
+    {
+        return [(4, 4)];
     }
 
     private (int, int)[] AsSeparatedHex(string text)
