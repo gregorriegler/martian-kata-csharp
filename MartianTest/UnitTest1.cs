@@ -18,13 +18,13 @@ public class Tests
     [Test]
     public void ConvertsAStringToHex()
     {
-        var h = ToHex();
+        var h = ToHex("HOW A");
         Assert.That(h, Is.EqualTo(new[] { 0x48, 0x4F, 0x57, 0x20, 0x41 }));
     }
 
-    private static char[] ToHex()
+    private static char[] ToHex(string text)
     {
-        return "HOW A".ToCharArray();
+        return text.ToCharArray();
     }
 
     private static string ToAscii(string firstSign, string secondSign)
