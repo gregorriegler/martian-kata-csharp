@@ -40,7 +40,7 @@ public class Tests
     public void TranslatesToMoves()
     {
         var expected = ToMoves("HOW");
-        Assert.That(expected, Is.EqualTo(new[] { (4, 4), (-4, 11), (-10,2) }));
+        Assert.That(expected, Is.EqualTo(new[] { (4, 4), (-4, 11), (-10, 2) }));
     }
 
     private (int, int)[] ToMoves(string message)
@@ -78,8 +78,6 @@ public class Tests
         int hexValue = Convert.ToInt32(hexString, 16);
         return (char)hexValue + "";
     }
-    
-    
 }
 
 public static class EnumerableExtensions
