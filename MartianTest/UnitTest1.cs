@@ -26,25 +26,27 @@ public class Tests
     public void SeparatesAHexIntoTwoParts()
     {
         var expected = SeparateHex('H');
-        Assert.That(expected, Is.EqualTo((4,8)));
+        Assert.That(expected, Is.EqualTo((4, 8)));
     }
 
     [Test]
     public void GivesSeparatedHexesForString()
     {
         var expected = AsSeparatedHex("HO");
-        Assert.That(expected, Is.EqualTo(new [] {(4,8), (4,15)}));
+        Assert.That(expected, Is.EqualTo(new[] { (4, 8), (4, 15) }));
     }
 
     [Test]
     public void METHOD()
     {
-        Assert.That(ToMoves("H"),Is.EqualTo(new []{(4,4)}));
+        Assert.That(ToMoves("H"), Is.EqualTo(new[] { (4, 4) }));
     }
 
     private (int, int)[] ToMoves(string message)
     {
-        return [(4, 4)];
+        var asSeparatedHex = AsSeparatedHex(message); // 48
+        
+        return [(asSeparatedHex[0].Item1 - 0, asSeparatedHex[0].Item2 - asSeparatedHex[0].Item1)];
     }
 
     private (int, int)[] AsSeparatedHex(string text)
@@ -56,8 +58,8 @@ public class Tests
 
     private static (int first, int second) SeparateHex(int hex)
     {
-        var first = hex / 16 % 16;  
-        var second = hex % 16;         
+        var first = hex / 16 % 16;
+        var second = hex % 16;
         return (first, second);
     }
 
