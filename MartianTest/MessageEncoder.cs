@@ -6,9 +6,14 @@ public static class MessageEncoder
     {
         return EnumerableExtensions.Flatten(AsSeparatedHex(message))
             .Aggregate(Enumerable.Empty<int>(), (moves, target) => moves.Append(target - moves.Sum()))
-            .AppendQuestionMove()
+            .With(QuestionMove)
             .Pairwise()
             .ToArray();
+    }
+
+    private static IEnumerable<int> QuestionMove(IEnumerable<int> moves)
+    {
+        return moves.Append(-moves.Sum()).Append(0);
     }
 
     private static IEnumerable<int> AppendQuestionMove(IEnumerable<int> enumerable)

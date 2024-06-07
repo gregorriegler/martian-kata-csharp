@@ -27,8 +27,8 @@ public static class EnumerableExtensions
         return source.SelectMany(it => new[] { it.Item1, it.Item2 });
     }
     
-    public static IEnumerable<int> AppendQuestionMove(this IEnumerable<int> enumerable)
+    public static IEnumerable<int> With(this IEnumerable<int> enumerable, Func<IEnumerable<int>, IEnumerable<int>> func)
     {
-        return enumerable.Append(-enumerable.Sum()).Append(0);
+        return func.Invoke(enumerable);
     }
 }
