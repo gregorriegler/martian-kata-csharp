@@ -3,8 +3,9 @@ namespace MartianTest;
 public class Tests
 {
     [Test]
-    public void appleSauce()
+    public void AppleSauce()
     {
-        Assert.AreEqual("HOW ALIVE?", "HOW ALIVE?");
+        var howAlive = "HOW ALIVE?";
+        Assert.AreEqual("HOW ALIVE?", howAlive);
     }
 }
