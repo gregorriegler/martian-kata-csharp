@@ -43,8 +43,8 @@ public class Tests
         var stepperTester = new StepperTester();
         Rover rover = new Rover(stepperTester);
         
-        rover.sendMessage("HOW");
+        rover.SendMessage("HOW");
         
-        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int>()));
+        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int> {4,4,-4,11,-10,2}));
     }
 }

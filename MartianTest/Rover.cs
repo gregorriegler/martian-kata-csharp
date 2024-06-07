@@ -9,7 +9,24 @@ public class Rover
         _stepper = stepper;
     }
 
-    public void sendMessage(string message)
+    public void SendMessage(string message)
     {
+        foreach (var move in MessageEncoder.ToMoves(message))
+        {
+            moveIt(move.Item1);
+            moveIt(move.Item2);
+        }
+    }
+
+    private void moveIt(int move)
+    {
+        if (move > 0)
+        {
+            _stepper.MoveClockwise(move);
+        }
+        else
+        {
+            _stepper.MoveAnticlockwise(-move);
+        }
     }
 }
