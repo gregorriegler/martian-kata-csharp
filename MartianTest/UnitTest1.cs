@@ -16,10 +16,15 @@ public class Tests
     }
 
     [Test]
-    public void METHOD()
+    public void ConvertsAStringToHex()
     {
-        var h = new []{(int)"H"[0], (int)"O"[0]};
-        Assert.That(h, Is.EqualTo(new[] { 0x48, 0x4F }));
+        var h = ToHex();
+        Assert.That(h, Is.EqualTo(new[] { 0x48, 0x4F, 0x57, 0x20, 0x41 }));
+    }
+
+    private static char[] ToHex()
+    {
+        return "HOW A".ToCharArray();
     }
 
     private static string ToAscii(string firstSign, string secondSign)
