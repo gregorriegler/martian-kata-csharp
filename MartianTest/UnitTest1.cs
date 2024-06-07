@@ -46,18 +46,19 @@ public class Tests
     {
         var asSeparatedHex = AsSeparatedHex(message);
         var start = 0;
-        
+
+        var moves = new List<int>();
+        var aggregate = asSeparatedHex.Aggregate(Enumerable.Empty<int>(), (ints, tuple) => ints.Append(tuple.Item1).Append(tuple.Item2));
         var position = start;
-        var moves = new List<(int, int)>();
-        foreach (var hex in asSeparatedHex)
+        foreach (var digit in aggregate)
         {
-            var first = hex.Item1 - position;
-            var second = hex.Item2 - hex.Item1;
-            moves.Add((first, second));
-            position = position + first + second;
+            moves.Add(digit - position);
+            position += digit - position;
         }
 
-        return moves.ToArray();
+        return Enumerable.Range(0, moves.Count / 2)
+            .Select(i => (moves[2 * i], moves[2 * i + 1]))
+            .ToArray();
     }
 
     private (int, int)[] AsSeparatedHex(string text)
