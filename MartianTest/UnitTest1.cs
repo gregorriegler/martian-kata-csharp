@@ -46,7 +46,7 @@ public class Tests
     private (int, int)[] ToMoves(string message)
     {
         return AsSeparatedHex(message)
-            .SelectMany(it => new[] { it.Item1, it.Item2 })
+            .Flatten()
             .Aggregate(Enumerable.Empty<int>(), (accumulator, target) => accumulator.Append(target - accumulator.Sum()))
             .Pairwise()
             .ToArray();
@@ -102,5 +102,10 @@ public static class EnumerableExtensions
                 yield return (first, second);
             }
         }
+    }
+
+    public static IEnumerable<int> Flatten(this IEnumerable<(int, int)> source)
+    {
+        return source.SelectMany(it => new[] { it.Item1, it.Item2 });
     }
 }
