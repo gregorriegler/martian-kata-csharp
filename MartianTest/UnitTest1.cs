@@ -32,8 +32,8 @@ public class Tests
     [Test]
     public void GivesSeparatedHexesForString()
     {
-        var expected = AsSeparatedHex("H");
-        Assert.That(expected, Is.EqualTo(new [] {(4,8)}));
+        var expected = AsSeparatedHex("HO");
+        Assert.That(expected, Is.EqualTo(new [] {(4,8), (4,15)}));
     }
 
     private (int, int)[] AsSeparatedHex(string text)
