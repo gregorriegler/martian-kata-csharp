@@ -37,7 +37,7 @@ public class Tests
     }
 
     [Test]
-    public void METHOD()
+    public void TranslatesToMoves()
     {
         Assert.That(ToMoves("HOW"), Is.EqualTo(new[] { (4, 4), (-4, 11), (-10,2) }));
     }
