@@ -39,14 +39,19 @@ public class Tests
     [Test]
     public void METHOD()
     {
-        Assert.That(ToMoves("H"), Is.EqualTo(new[] { (4, 4) }));
+        Assert.That(ToMoves("HO"), Is.EqualTo(new[] { (4, 4), (-4, 11) }));
     }
 
     private (int, int)[] ToMoves(string message)
     {
         var asSeparatedHex = AsSeparatedHex(message); // 48
-        
-        return [(asSeparatedHex[0].Item1 - 0, asSeparatedHex[0].Item2 - asSeparatedHex[0].Item1)];
+
+        var start = 0;
+        return
+        [
+            (asSeparatedHex[0].Item1 - start, asSeparatedHex[0].Item2 - (asSeparatedHex[0].Item1 - start)),
+            (asSeparatedHex[1].Item1 - (asSeparatedHex[0].Item2 - (asSeparatedHex[0].Item1 - start) + (asSeparatedHex[0].Item1 - start)), 11)
+        ];
     }
 
     private (int, int)[] AsSeparatedHex(string text)
