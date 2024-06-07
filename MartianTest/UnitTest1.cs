@@ -39,15 +39,14 @@ public class Tests
     [Test]
     public void METHOD()
     {
-        Assert.That(ToMoves("HO"), Is.EqualTo(new[] { (4, 4), (-4, 11) }));
+        Assert.That(ToMoves("HOW"), Is.EqualTo(new[] { (4, 4), (-4, 11), (-10,2) }));
     }
 
     private (int, int)[] ToMoves(string message)
     {
         var asSeparatedHex = AsSeparatedHex(message); // 48
-
-
         var start = 0;
+        
         var position = start;
         var moves = new List<(int, int)>();
         foreach (var hex in asSeparatedHex)
