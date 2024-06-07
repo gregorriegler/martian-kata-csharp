@@ -4,13 +4,16 @@ public static class MessageEncoder
 {
     public static (int, int)[] ToMoves(string message)
     {
-        var enumerable = EnumerableExtensions.Flatten(AsSeparatedHex(message))
-            .Aggregate(Enumerable.Empty<int>(), (moves, target) => moves.Append(target - moves.Sum()));
-        var sum = enumerable.Sum();
-        enumerable = enumerable.Append(-sum).Append(0);
-        return enumerable
+        return EnumerableExtensions.Flatten(AsSeparatedHex(message))
+            .Aggregate(Enumerable.Empty<int>(), (moves, target) => moves.Append(target - moves.Sum()))
+            .AppendQuestionMove()
             .Pairwise()
             .ToArray();
+    }
+
+    private static IEnumerable<int> AppendQuestionMove(IEnumerable<int> enumerable)
+    {
+        return enumerable.Append(-enumerable.Sum()).Append(0);
     }
 
     public static (int, int)[] AsSeparatedHex(string text)

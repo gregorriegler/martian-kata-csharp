@@ -26,4 +26,9 @@ public static class EnumerableExtensions
     {
         return source.SelectMany(it => new[] { it.Item1, it.Item2 });
     }
+    
+    public static IEnumerable<int> AppendQuestionMove(this IEnumerable<int> enumerable)
+    {
+        return enumerable.Append(-enumerable.Sum()).Append(0);
+    }
 }
