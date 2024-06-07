@@ -46,16 +46,11 @@ public class Tests
     {
         var aggregate = AsSeparatedHex(message)
             .Aggregate(Enumerable.Empty<int>(), (accumulator, tuple) => accumulator.Append(tuple.Item1).Append(tuple.Item2));
-        
-        var start = 0;
-        var moves = new List<int>();
-        var position = start;
-        foreach (var digit in aggregate)
+
+        var moves = aggregate.Aggregate(Enumerable.Empty<int>(), (accumulator, target) =>
         {
-            var move = digit - position;
-            moves.Add(move);
-            position += move;
-        }
+            return accumulator.Append(target - accumulator.Sum());
+        }).ToList();
 
         return Enumerable.Range(0, moves.Count / 2)
             .Select(i => (moves[2 * i], moves[2 * i + 1]))
