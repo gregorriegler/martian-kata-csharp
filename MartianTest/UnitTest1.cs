@@ -47,7 +47,7 @@ public class Tests
     {
         return AsSeparatedHex(message)
             .Flatten()
-            .Aggregate(Enumerable.Empty<int>(), (accumulator, target) => accumulator.Append(target - accumulator.Sum()))
+            .Aggregate(Enumerable.Empty<int>(), (moves, target) => moves.Append(target - moves.Sum()))
             .Pairwise()
             .ToArray();
     }
