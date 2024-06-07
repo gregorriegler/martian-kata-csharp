@@ -40,11 +40,11 @@ namespace MartianTest{
          * move the indicated number of steps clockwise.
          * The size of a step is defined above.
          */
-        public void MoveClockwise(int steps)
+        public virtual void MoveClockwise(int steps)
         {
             // logic to activate the relevant pins is omitted in this exercise
         }
-        public void MoveAnticlockwise(int steps)
+        public virtual void MoveAnticlockwise(int steps)
         {
             // logic to activate the relevant pins is omitted in this exercise
         }

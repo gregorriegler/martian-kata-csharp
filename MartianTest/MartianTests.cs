@@ -41,6 +41,17 @@ public class Tests
         Assert.That(expected, Is.EqualTo(new[] { (4, 4), (-4, 11), (-10, 2) }));
     }
 
+    [Test]
+    public void METHOD()
+    {
+        var stepperTester = new StepperTester();
+        Rover rover = new Rover(stepperTester);
+        
+        rover.sendMessage("HOW");
+        
+        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int>()));
+    }
+
     private (int, int)[] ToMoves(string message)
     {
         return AsSeparatedHex(message)
@@ -75,6 +86,21 @@ public class Tests
         string hexString = firstSign + secondSign;
         int hexValue = Convert.ToInt32(hexString, 16);
         return (char)hexValue + "";
+    }
+}
+
+public class Rover
+{
+    private readonly Stepper _stepper;
+
+    public Rover(Stepper stepper)
+    {
+        _stepper = stepper;
+    }
+
+    public void sendMessage(string message)
+    {
+        throw new NotImplementedException();
     }
 }
 
