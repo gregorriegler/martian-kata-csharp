@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace MartianTest;
 
 public class Tests
