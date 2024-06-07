@@ -18,8 +18,8 @@ public class Tests
     [Test]
     public void METHOD()
     {
-        var h = (int)"H"[0];
-        Assert.That(h, Is.EqualTo(0x48));
+        var h = new []{(int)"H"[0]};
+        Assert.That(h, Is.EqualTo(new[] { 0x48 }));
     }
 
     private static string ToAscii(string firstSign, string secondSign)
