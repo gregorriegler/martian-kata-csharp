@@ -39,7 +39,8 @@ public class Tests
     [Test]
     public void TranslatesToMoves()
     {
-        Assert.That(ToMoves("HOW"), Is.EqualTo(new[] { (4, 4), (-4, 11), (-10,2) }));
+        var expected = ToMoves("HOW");
+        Assert.That(expected, Is.EqualTo(new[] { (4, 4), (-4, 11), (-10,2) }));
     }
 
     private (int, int)[] ToMoves(string message)
