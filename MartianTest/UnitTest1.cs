@@ -16,8 +16,8 @@ public class Tests
     [Test]
     public void ConvertsAStringToHex()
     {
-        var h = ToHex("HOW A");
-        Assert.That(h, Is.EqualTo(new[] { 0x48, 0x4F, 0x57, 0x20, 0x41 }));
+        var hex = ToHex("HOW A");
+        Assert.That(hex, Is.EqualTo(new[] { 0x48, 0x4F, 0x57, 0x20, 0x41 }));
     }
 
     private static char[] ToHex(string text)
