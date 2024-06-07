@@ -44,16 +44,10 @@ public class Tests
 
     private (int, int)[] ToMoves(string message)
     {
-        var aggregate = AsSeparatedHex(message)
-            .Aggregate(Enumerable.Empty<int>(), (accumulator, tuple) => accumulator.Append(tuple.Item1).Append(tuple.Item2));
-
-        var moves = aggregate.Aggregate(Enumerable.Empty<int>(), (accumulator, target) =>
-        {
-            return accumulator.Append(target - accumulator.Sum());
-        }).ToList();
-
-        return Enumerable.Range(0, moves.Count / 2)
-            .Select(i => (moves[2 * i], moves[2 * i + 1]))
+        return AsSeparatedHex(message)
+            .Aggregate(Enumerable.Empty<int>(), (accumulator, tuple) => accumulator.Append(tuple.Item1).Append(tuple.Item2))
+            .Aggregate(Enumerable.Empty<int>(), (accumulator, target) => accumulator.Append(target - accumulator.Sum()))
+            .Pairwise()
             .ToArray();
     }
 
@@ -82,5 +76,30 @@ public class Tests
         string hexString = firstSign + secondSign;
         int hexValue = Convert.ToInt32(hexString, 16);
         return (char)hexValue + "";
+    }
+    
+    
+}
+
+public static class EnumerableExtensions
+{
+    public static IEnumerable<(int, int)> Pairwise(this IEnumerable<int> source)
+    {
+        if (source == null)
+            throw new ArgumentNullException(nameof(source));
+
+        using (var enumerator = source.GetEnumerator())
+        {
+            while (enumerator.MoveNext())
+            {
+                int first = enumerator.Current;
+
+                if (!enumerator.MoveNext())
+                    throw new ArgumentException("Enumerable must contain an even number of elements");
+
+                int second = enumerator.Current;
+                yield return (first, second);
+            }
+        }
     }
 }
