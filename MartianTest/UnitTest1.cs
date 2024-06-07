@@ -1,3 +1,5 @@
+using NUnit.Framework.Constraints;
+
 namespace MartianTest;
 
 public class Tests
@@ -25,6 +27,20 @@ public class Tests
     {
         var expected = SeparateHex('H');
         Assert.That(expected, Is.EqualTo((4,8)));
+    }
+
+    [Test]
+    public void GivesSeparatedHexesForString()
+    {
+        var expected = AsSeparatedHex("H");
+        Assert.That(expected, Is.EqualTo(new [] {(4,8)}));
+    }
+
+    private (int, int)[] AsSeparatedHex(string text)
+    {
+        return text.ToCharArray()
+            .Select(it => SeparateHex(it))
+            .ToArray();
     }
 
     private static (int first, int second) SeparateHex(int hex)
