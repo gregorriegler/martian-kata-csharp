@@ -23,8 +23,17 @@ public class Tests
     [Test]
     public void SeparatesAHexIntoTwoParts()
     {
-        Assert.That((4,8), Is.EqualTo((4,8)));
+        var expected = SeparateHex('H');
+        Assert.That(expected, Is.EqualTo((4,8)));
     }
+
+    private static (int first, int second) SeparateHex(int hex)
+    {
+        var first = hex / 16 % 16;  
+        var second = hex % 16;         
+        return (first, second);
+    }
+
 
     private static char[] ToHex(string text)
     {
