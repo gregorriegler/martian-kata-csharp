@@ -52,8 +52,9 @@ public class Tests
         var position = start;
         foreach (var digit in aggregate)
         {
-            moves.Add(digit - position);
-            position += digit - position;
+            var move = digit - position;
+            moves.Add(move);
+            position += move;
         }
 
         return Enumerable.Range(0, moves.Count / 2)
