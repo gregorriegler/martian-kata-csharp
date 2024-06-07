@@ -45,6 +45,6 @@ public class Tests
         
         rover.SendMessage("HOW");
         
-        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int> {4,4,-4,11,-10,2,-7,0}));
+        Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int> {4,4,-4,11,-10,2,-7,0})); //ignoring stepsize
     }
 }
