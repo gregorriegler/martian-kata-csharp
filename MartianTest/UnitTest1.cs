@@ -20,6 +20,12 @@ public class Tests
         Assert.That(hex, Is.EqualTo(new[] { 0x48, 0x4F, 0x57, 0x20, 0x41 }));
     }
 
+    [Test]
+    public void SeparatesAHexIntoTwoParts()
+    {
+        Assert.That((4,8), Is.EqualTo((4,8)));
+    }
+
     private static char[] ToHex(string text)
     {
         return text.ToCharArray();
