@@ -16,11 +16,6 @@ public static class MessageEncoder
         return moves.Append(-moves.Sum()).Append(0);
     }
 
-    private static IEnumerable<int> AppendQuestionMove(IEnumerable<int> enumerable)
-    {
-        return enumerable.Append(-enumerable.Sum()).Append(0);
-    }
-
     public static (int, int)[] AsSeparatedHex(string text)
     {
         return text.ToCharArray()
