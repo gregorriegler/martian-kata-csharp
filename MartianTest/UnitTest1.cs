@@ -52,7 +52,7 @@ public class Tests
         foreach (var hex in asSeparatedHex)
         {
             var first = hex.Item1 - position;
-            var second = hex.Item2 - first - position;
+            var second = hex.Item2 - hex.Item1;
             moves.Add((first, second));
             position = position + first + second;
         }
