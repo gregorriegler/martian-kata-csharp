@@ -5,10 +5,14 @@ namespace MartianTest;
 public class Tests
 {
     [Test]
-    public void AppleSauce()
+    public void ConvertsTwoDigitsToAscii()
     {
-        var howAlive = ToAscii("4", "8") + "O" + "W ALIVE?";
-        Assert.That(howAlive, Is.EqualTo("HOW ALIVE?"));
+        var howAlive = ToAscii("4", "8") +
+                       ToAscii("4", "F") +
+                       ToAscii("5", "7") +
+                       ToAscii("2", "0") +
+                       ToAscii("4", "1");
+        Assert.That(howAlive, Is.EqualTo("HOW A"));
     }
 
     private static string ToAscii(string firstSign, string secondSign)
