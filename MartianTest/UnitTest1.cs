@@ -45,7 +45,7 @@ public class Tests
     private (int, int)[] ToMoves(string message)
     {
         return AsSeparatedHex(message)
-            .Aggregate(Enumerable.Empty<int>(), (accumulator, tuple) => accumulator.Append(tuple.Item1).Append(tuple.Item2))
+            .SelectMany(it => new[] { it.Item1, it.Item2 })
             .Aggregate(Enumerable.Empty<int>(), (accumulator, target) => accumulator.Append(target - accumulator.Sum()))
             .Pairwise()
             .ToArray();
