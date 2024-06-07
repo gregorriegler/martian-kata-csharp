@@ -44,7 +44,7 @@ public class Tests
 
     private (int, int)[] ToMoves(string message)
     {
-        var asSeparatedHex = AsSeparatedHex(message); // 48
+        var asSeparatedHex = AsSeparatedHex(message);
         var start = 0;
         
         var position = start;
