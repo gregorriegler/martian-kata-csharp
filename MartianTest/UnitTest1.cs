@@ -44,11 +44,11 @@ public class Tests
 
     private (int, int)[] ToMoves(string message)
     {
-        var hexes = AsSeparatedHex(message);
+        var aggregate = AsSeparatedHex(message)
+            .Aggregate(Enumerable.Empty<int>(), (accumulator, tuple) => accumulator.Append(tuple.Item1).Append(tuple.Item2));
+        
         var start = 0;
-
         var moves = new List<int>();
-        var aggregate = hexes.Aggregate(Enumerable.Empty<int>(), (ints, tuple) => ints.Append(tuple.Item1).Append(tuple.Item2));
         var position = start;
         foreach (var digit in aggregate)
         {
