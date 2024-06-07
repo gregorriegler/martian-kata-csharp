@@ -7,8 +7,10 @@ public class Tests
     [Test]
     public void AppleSauce()
     {
-        var H = ((char)int.Parse("" + 4 + 8, System.Globalization.NumberStyles.HexNumber)).ToString();
-        var howAlive = H + "OW ALIVE?";
-        Assert.AreEqual("HOW ALIVE?", howAlive);
+        var firstSign = 4;
+        var secondSign = 8;
+        var h = ((char)int.Parse("" + firstSign + secondSign, System.Globalization.NumberStyles.HexNumber)).ToString();
+        var howAlive = h + "OW ALIVE?";
+        Assert.That(howAlive, Is.EqualTo("HOW ALIVE?"));
     }
 }
