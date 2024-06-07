@@ -46,12 +46,19 @@ public class Tests
     {
         var asSeparatedHex = AsSeparatedHex(message); // 48
 
+
         var start = 0;
-        return
-        [
-            (asSeparatedHex[0].Item1 - start, asSeparatedHex[0].Item2 - (asSeparatedHex[0].Item1 - start)),
-            (asSeparatedHex[1].Item1 - (asSeparatedHex[0].Item2 - (asSeparatedHex[0].Item1 - start) + (asSeparatedHex[0].Item1 - start)), 11)
-        ];
+        var position = start;
+        var moves = new List<(int, int)>();
+        foreach (var hex in asSeparatedHex)
+        {
+            var first = hex.Item1 - position;
+            var second = hex.Item2 - first - position;
+            moves.Add((first, second));
+            position = position + first + second;
+        }
+
+        return moves.ToArray();
     }
 
     private (int, int)[] AsSeparatedHex(string text)
