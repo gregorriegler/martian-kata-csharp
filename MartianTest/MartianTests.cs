@@ -52,7 +52,7 @@ public class Tests
         Assert.That(stepperTester.RecordedMoves, Is.EqualTo(new List<int>()));
     }
 
-    private (int, int)[] ToMoves(string message)
+    public static (int, int)[] ToMoves(string message)
     {
         return AsSeparatedHex(message)
             .Flatten()
@@ -61,14 +61,14 @@ public class Tests
             .ToArray();
     }
 
-    private (int, int)[] AsSeparatedHex(string text)
+    public static (int, int)[] AsSeparatedHex(string text)
     {
         return text.ToCharArray()
             .Select(it => SeparateHex(it))
             .ToArray();
     }
 
-    private static (int first, int second) SeparateHex(int hex)
+    public static (int first, int second) SeparateHex(int hex)
     {
         var first = hex / 16 % 16;
         var second = hex % 16;
@@ -100,7 +100,6 @@ public class Rover
 
     public void sendMessage(string message)
     {
-        throw new NotImplementedException();
     }
 }
 
